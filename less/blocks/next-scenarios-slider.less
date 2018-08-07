@@ -56,11 +56,22 @@
   & > input {
     display: none;
   }
-  .kitchen1,
-  .kitchen {
+  .cam,
+  .kitchen,
+  .hall,
+  .bulb {
     display: none;
   }
   #kitchen_devices:checked ~ &__items .kitchen {
+    display: block;
+  }
+  #cam_devices:checked ~ &__items .cam {
+    display: block;
+  }
+  #hall_devices:checked ~ &__items .hall {
+    display: block;
+  }
+  #bulb_devices:checked ~ &__items .bulb {
     display: block;
   }
 }

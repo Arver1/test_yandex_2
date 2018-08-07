@@ -216,17 +216,18 @@
 				<label for="all_devices" class="feautured-devices__menu" tabindex="1">Все</label>
 			</div>
 			<ul class="feautured-devices__items">
-				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="kitchen_devices">Кухня</label></a></li>
-				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="hall_devices">Зал</label></a></li>
-				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="bulb_devices">Лампочки</label></a></li>
-				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="cam_devices">Камеры</label></a></li>
+				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="kitchen_devices">Кухня</label></a><small>Выбрано</small></li>
+				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="hall_devices">Зал</label></a><small>Выбрано</small></li>
+				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="bulb_devices">Лампочки</label></a><small>Выбрано</small></li>
+				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="cam_devices">Камеры</label></a><small>Выбрано</small></li>
 			</ul>
 			<section class="next-scenarios-slider">
-				<input type="checkbox" id="kitchen_devices">
-				<input type="checkbox" id="hall_devices">
-				<input type="checkbox" id="bulb_devices">
-				<input type="checkbox" id="cam_devices">
+				<input type="checkbox" id="kitchen_devices" checked>
+				<input type="checkbox" id="hall_devices" checked>
+				<input type="checkbox" id="bulb_devices" checked>
+				<input type="checkbox" id="cam_devices" checked>
 				<ul class="next-scenarios-slider__items">
+					<!-- классы kitchen/hall/bulb/cam для li заданы для тестирования меню -->
 					<li class="next-scenarios-slider__item next-scenarios-slider__item--color kitchen" >
 						<svg class="next-scenarios-slider__icon" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun2"></use>
@@ -234,42 +235,42 @@
 						<h3 class="next-scenarios-slider__title">Xiaomi Yeelight LED Smart Bulb</h3>
 						<p class="next-scenarios-slider__description">Включено</p>
 					</li>
-					<li class="next-scenarios-slider__item next-scenarios-slider__item--color kitchen1">
+					<li class="next-scenarios-slider__item next-scenarios-slider__item--color kitchen">
 						<svg class="next-scenarios-slider__icon" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun"></use>
 						</svg>
 						<h3 class="next-scenarios-slider__title">D-Link Omna 180 Cam</h3>
 						<p class="next-scenarios-slider__description">Включится в 17:00</p>
 					</li>
-					<li class="next-scenarios-slider__item next-scenarios-slider__item--color kitchen1">
+					<li class="next-scenarios-slider__item next-scenarios-slider__item--color hall">
 						<svg class="next-scenarios-slider__icon" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_temperature"></use>
 						</svg>
 						<h3 class="next-scenarios-slider__title">Elgato Eve Degree Connected</h3>
 						<p class="next-scenarios-slider__description">Выключено до 17:00</p>
 					</li>
-					<li class="next-scenarios-slider__item next-scenarios-slider__item--color kitchen1">
+					<li class="next-scenarios-slider__item next-scenarios-slider__item--color bulb">
 						<svg class="next-scenarios-slider__icon" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun"></use>
 						</svg>
 						<h3 class="next-scenarios-slider__title">LIFX Mini Day & Dusk A60 E27</h3>
 						<p class="next-scenarios-slider__description">Включится в 17:00</p>
 					</li>
-					<li class="next-scenarios-slider__item next-scenarios-slider__item--color kitchen1">
+					<li class="next-scenarios-slider__item next-scenarios-slider__item--color bulb">
 						<svg class="next-scenarios-slider__icon" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun2"></use>
 						</svg>
 						<h3 class="next-scenarios-slider__title">Xiaomi Mi Air Purifier 2S</h3>
 						<p class="next-scenarios-slider__description">Включено</p>
 					</li>
-					<li class="next-scenarios-slider__item next-scenarios-slider__item--color kitchen1">
+					<li class="next-scenarios-slider__item next-scenarios-slider__item--color cam">
 						<svg class="next-scenarios-slider__icon" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun"></use>
 						</svg>
 						<h3 class="next-scenarios-slider__title">Philips Zhirui</h3>
 						<p class="next-scenarios-slider__description">Выключено</p>
 					</li>
-					<li class="next-scenarios-slider__item next-scenarios-slider__item--color kitchen1">
+					<li class="next-scenarios-slider__item next-scenarios-slider__item--color cam">
 						<svg class="next-scenarios-slider__icon" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun2"></use>
 						</svg>

@@ -12,9 +12,6 @@
     justify-content: space-between;
     align-items: center;
   }
-  & > input {
-    display: none;
-  }
   &__menu {
     display: block;
     border-radius: 17px;
@@ -43,6 +40,9 @@
     right: 16px;
     transform: rotate(-45deg);
   }
+  & > input {
+    display: none;
+  }
   &__items {
     display: none;
     margin: 0;
@@ -69,12 +69,16 @@
   &__item {
     margin-bottom: 10px;
   }
+  &__item small {
+    .font(8px; 10px; normal; #858585);
+  }
   &__menu-link {
     text-decoration: none;
   }
   &__menu-label {
     cursor: pointer;
     .font(13px; 15px; bold; #000000);
+    margin-right: 10px;
   }
   &__menu:hover,
   &__menu:active,
