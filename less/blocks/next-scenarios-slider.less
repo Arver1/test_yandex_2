@@ -74,4 +74,53 @@
   #bulb_devices:checked ~ &__items .bulb {
     display: block;
   }
+  &__menu-items {
+    display: none;
+    margin: 0;
+    padding: 10px 20px;
+    width: calc(100% - 15px);
+    box-sizing: border-box;
+    list-style: none;
+    z-index: 10;
+    background-color: #FFD93E;
+    position: absolute;
+    top: 0;
+    border-radius: 17px 0 17px 17px;
+    box-shadow: 2px 0 20px -6px #000;
+  }
+  &__menu-item {
+    margin-bottom: 10px;
+  }
+  &__menu-link {
+    text-decoration: none;
+  }
+  &__menu-label {
+    cursor: pointer;
+    .font(13px; 15px; bold; #858585);
+    margin-right: 10px;
+  }
+  &__menu-label:hover,
+  &__menu-label:active {
+    color: #858585;
+  }
+  #all_devices:checked ~ &__menu-items {
+    display: block;
+  }
+  &__menu-inf {
+    display: none;
+    .font(8px; 10px; normal; #858585);
+  }
+  // подсказка выбрано
+  #kitchen_devices:checked ~ &__menu-items &__menu-inf--kitchen,
+  #cam_devices:checked ~ &__menu-items &__menu-inf--cam,
+  #hall_devices:checked ~ &__menu-items &__menu-inf--hall,
+  #bulb_devices:checked ~ &__menu-items &__menu-inf--bulb {
+    .inline_block();
+  }
+  #kitchen_devices:checked ~ &__menu-items &__menu-label--kitchen,
+  #cam_devices:checked ~ &__menu-items &__menu-label--cam,
+  #hall_devices:checked ~ &__menu-items &__menu-label--hall,
+  #bulb_devices:checked ~ &__menu-items &__menu-label--bulb {
+    color: #000;
+  }
 }

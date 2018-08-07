@@ -210,22 +210,22 @@
 			</section>
 		</section>
   		<section class="feautured-devices">
-			<input type="checkbox" id="all_devices">
 			<div class="feautured-devices__menu-wrapper">
 				<h2 class="feautured-devices__title">Избранные устройства!</h2>
 				<label for="all_devices" class="feautured-devices__menu" tabindex="1">Все</label>
 			</div>
-			<ul class="feautured-devices__items">
-				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="kitchen_devices">Кухня</label></a><small>Выбрано</small></li>
-				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="hall_devices">Зал</label></a><small>Выбрано</small></li>
-				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="bulb_devices">Лампочки</label></a><small>Выбрано</small></li>
-				<li class="feautured-devices__item"><a class="feautured-devices__menu-link" href="#"><label class="feautured-devices__menu-label" for="cam_devices">Камеры</label></a><small>Выбрано</small></li>
-			</ul>
 			<section class="next-scenarios-slider">
+				<input type="checkbox" id="all_devices">
 				<input type="checkbox" id="kitchen_devices" checked>
 				<input type="checkbox" id="hall_devices" checked>
 				<input type="checkbox" id="bulb_devices" checked>
 				<input type="checkbox" id="cam_devices" checked>
+				<ul class="next-scenarios-slider__menu-items">
+					<li class="next-scenarios-slider__menu-item"><a class="next-scenarios-slider__menu-link" href="#"><label class="next-scenarios-slider__menu-label next-scenarios-slider__menu-label--kitchen" for="kitchen_devices">Кухня</label></a><small class="next-scenarios-slider__menu-inf next-scenarios-slider__menu-inf--kitchen">Выбрано</small></li>
+					<li class="next-scenarios-slider__menu-item"><a class="next-scenarios-slider__menu-link" href="#"><label class="next-scenarios-slider__menu-label next-scenarios-slider__menu-label--hall" for="hall_devices">Зал</label></a><small class="next-scenarios-slider__menu-inf next-scenarios-slider__menu-inf--hall">Выбрано</small></li>
+					<li class="next-scenarios-slider__menu-item"><a class="next-scenarios-slider__menu-link" href="#"><label class="next-scenarios-slider__menu-label next-scenarios-slider__menu-label--bulb" for="bulb_devices">Лампочки</label></a><small class="next-scenarios-slider__menu-inf next-scenarios-slider__menu-inf--bulb">Выбрано</small></li>
+					<li class="next-scenarios-slider__menu-item"><a class="next-scenarios-slider__menu-link" href="#"><label class="next-scenarios-slider__menu-label next-scenarios-slider__menu-label--cam" for="cam_devices">Камеры</label></a><small class="next-scenarios-slider__menu-inf next-scenarios-slider__menu-inf--cam">Выбрано</small></li>
+				</ul>
 				<ul class="next-scenarios-slider__items">
 					<!-- классы kitchen/hall/bulb/cam для li заданы для тестирования меню -->
 					<li class="next-scenarios-slider__item next-scenarios-slider__item--color kitchen" >
