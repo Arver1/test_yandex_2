@@ -56,6 +56,9 @@
   & > input {
     display: none;
   }
+  #all_devices:checked ~ & &__menu-items {
+    display: block;
+  }
   .cam,
   .kitchen,
   .hall,
@@ -96,15 +99,12 @@
   }
   &__menu-label {
     cursor: pointer;
-    .font(13px; 15px; bold; #858585);
+    .font(13px; 15px; bold; #BABABA);
     margin-right: 10px;
   }
   &__menu-label:hover,
   &__menu-label:active {
     color: #858585;
-  }
-  #all_devices:checked ~ &__menu-items {
-    display: block;
   }
   &__menu-inf {
     display: none;

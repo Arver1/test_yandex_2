@@ -50,4 +50,14 @@
   &__menu:active::after {
     background-color: #858585;
   }
+  & > input {
+    display: none;
+  }
+  #all_devices:checked ~ &__menu-wrapper &__menu {
+    color: #858585;
+  }
+  #all_devices:checked ~ &__menu-wrapper &__menu::before,
+  #all_devices:checked ~ &__menu-wrapper &__menu::after {
+    background-color: #858585;
+  }
 }
