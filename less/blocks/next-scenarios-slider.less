@@ -53,4 +53,14 @@
   &__icon--color {
     fill: #F7F7F7;
   }
+  & > input {
+    display: none;
+  }
+  .kitchen1,
+  .kitchen {
+    display: none;
+  }
+  #kitchen_devices:checked ~ &__items .kitchen {
+    display: block;
+  }
 }
