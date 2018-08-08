@@ -16,7 +16,7 @@ module.exports = {
 
   output: {
     filename: 'main.js',
-    path: PATHS.build,
+    path: PATHS.build
   },
 
   plugins: [

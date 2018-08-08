@@ -11,7 +11,7 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-	<svg style="display: none">
+  <svg style="display: none">
 		<symbol id="icon_temperature" viewBox="0 0 24 24">
 			<g id="Final" stroke="none" stroke-width="1" fill-rule="evenodd">
 				<g id="v1-2-1-home-dashboard" transform="translate(-464.000000, -269.000000)">
@@ -154,7 +154,7 @@
   			</ul>
 			<section class="next-scenarios-slider">
 				<ul class="next-scenarios-slider__items">
-					<li class="next-scenarios-slider__item">
+					<li class="next-scenarios-slider__item tempSlider" tabindex="0">
 						<svg class="next-scenarios-slider__icon" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_temperature"></use>
 						</svg>
@@ -213,7 +213,7 @@
 			<input type="checkbox" id="all_devices">
 			<div class="feautured-devices__menu-wrapper">
 				<h2 class="feautured-devices__title">Избранные устройства!</h2>
-				<label for="all_devices" class="feautured-devices__menu" tabindex="1">Все</label>
+				<label for="all_devices" class="feautured-devices__menu" tabindex="0">Все</label>
 			</div>
 			<section class="next-scenarios-slider">
 				<input type="checkbox" id="kitchen_devices" checked>
@@ -282,7 +282,7 @@
 		</section>
   	</div>
   </main>
-	<footer class="page-footer">
+  <footer class="page-footer">
 		<div class="page-footer__wrapper">
 			<ul class="page-footer__items">
 				<li class="page-footer__item"><a class="page-footer__link" href="#">Помощь</a></li>
@@ -295,6 +295,22 @@
 			</section>
 		</div>
 	</footer>
+  <div class="temperature temperature--off">
+	  <div class="temperature__wrapper">
+		  <section class="temperature-slider">
+			  <h2 class="temperature-slider__title">Elgato Eve Degree Connected</h2>
+			  <p class="temperature-slider__description">Включено</p>
+			  <button class="btn btn--size btn--color temperature-hand">Вручную</button>
+			  <button class="btn btn--size temperature-cold">Холодно</button>
+			  <button class="btn btn--size temperature-warm">Тепло</button>
+			  <div class="temperature-slider__range-wrapper">
+				  <input class="temperature-slider__range" type="range" min="-10" max="30" step="1">
+			  </div>
+		  </section>
+		  <button class="btn btn--color">Применить</button>
+		  <button class="btn cls">Закрыть</button>
+	  </div>
+  </div>
 <script src="js/main.js"></script>
 </body>
 </html>
