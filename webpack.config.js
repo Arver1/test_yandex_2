@@ -30,6 +30,7 @@ module.exports = {
         use: 'babel-loader'
       }
     ]
-  }
+  },
+  devtool: 'eval'
 };
 
