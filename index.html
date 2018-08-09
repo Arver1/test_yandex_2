@@ -154,7 +154,7 @@
   			</ul>
 			<section class="next-scenarios-slider">
 				<ul class="next-scenarios-slider__items">
-					<li class="next-scenarios-slider__item tempSlider" tabindex="0">
+					<li class="next-scenarios-slider__item popup-slider popup-slider--temp" tabindex="0">
 						<svg class="next-scenarios-slider__icon" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_temperature"></use>
 						</svg>
@@ -227,7 +227,7 @@
 					<li class="next-scenarios-slider__menu-item"><a class="next-scenarios-slider__menu-link" href="#"><label class="next-scenarios-slider__menu-label next-scenarios-slider__menu-label--cam" for="cam_devices">Камеры</label></a><small class="next-scenarios-slider__menu-inf next-scenarios-slider__menu-inf--cam">Выбрано</small></li>
 				</ul>
 				<ul class="next-scenarios-slider__items">
-					<!-- классы kitchen/hall/bulb/cam для li заданы для тестирования меню -->
+					<!-- классы kitchen/hall/bulb/cam для li заданы для тестирования меню,работает через checked -->
 					<li class="next-scenarios-slider__item next-scenarios-slider__item--color kitchen" >
 						<svg class="next-scenarios-slider__icon" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun2"></use>
@@ -305,6 +305,30 @@
 			  <button class="btn btn--size temperature-warm">Тепло</button>
 			  <div class="temperature-slider__range-wrapper">
 				  <input class="temperature-slider__range" type="range" min="-10" max="30" step="1">
+			  </div>
+		  </section>
+		  <button class="btn btn--color">Применить</button>
+		  <button class="btn cls">Закрыть</button>
+	  </div>
+  </div>
+  <div class="popup popup--off">
+	  <div class="popup__wrapper">
+		  <section class="slider">
+			  <h2 class="slider__title">Неизвестное устройство</h2>
+			  <p class="slider__description">Статус не определен...</p>
+			  <div class="slider__wrapper">
+				  <section class="next-function-slider">
+					  <section class="next-function-slider__control-panel">
+						  <div class="next-function-slider__control-panel-wrapper">
+							  <button class="next-function-slider__btn btn btn--size btn--color temperature-hand">Вручную</button>
+							  <button class="next-function-slider__btn btn btn--size temperature-cold">Холодно</button>
+							  <button class="next-function-slider__btn btn btn--size temperature-warm">Тепло</button>
+						  </div>
+					  </section>
+					  <div class="temperature-slider__range-wrapper">
+						  <input class="temperature-slider__range" type="range" min="-10" max="30" step="1">
+					  </div>
+				  </section>
 			  </div>
 		  </section>
 		  <button class="btn btn--color">Применить</button>
