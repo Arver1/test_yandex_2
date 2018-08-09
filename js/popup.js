@@ -10,7 +10,10 @@ function closePoUpSlider(e) {
 }
 
 function openPoUpSlider (e){
-  const elem = e.target.tagName.toLowerCase() === 'li' ? e.target : e.target.parentElement;
+  let elem = e.target;
+  while(elem.tagName.toLowerCase() !== 'li') {
+    elem = elem.parentElement;
+  }
   const typeSlider = [...elem.classList].join().replace(/\D+popup-slider--/, '');
   switch(typeSlider) {
     case 'temp':
