@@ -1,0 +1,23 @@
+.thermostat {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background-color: #f76b1c;
+  position: relative;
+  &__item {
+    position: absolute;
+    width: 2px;
+    height: 280px;
+    background-color: #068fff;
+    left: 50%;
+    animation-fill-mode: forwards;
+    cursor: pointer;
+  }
+  &__item:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #FFB100;
+  }
+}

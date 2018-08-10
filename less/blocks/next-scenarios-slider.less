@@ -47,11 +47,20 @@
     margin-right: 15px;
     height: 100px;
   }
+  &__item--size:hover,
+  &__item--size:active {
+    background: #FFFFFF;
+    box-shadow: 0 2px 6px 0 rgba(197,186,186,0.50);
+  }
   &__icon {
     fill: #fff;
   }
   &__icon--color {
     fill: #F7F7F7;
+  }
+  &__item--size:hover  &__icon--color,
+  &__item--size:active &__icon--color {
+    fill: #fff;
   }
   & > input {
     display: none;

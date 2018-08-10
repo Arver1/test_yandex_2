@@ -3,9 +3,11 @@ import slider from './slider';
 
 const popUp = document.querySelector('.popup');
 const btnCls = popUp.querySelector('.cls');
+const footer = document.querySelector('.page-footer');
 
 function closePoUpSlider(e) {
   popUp.classList.toggle('popup--off');
+  footer.classList.toggle('page-footer--off');
   e.target.removeEventListener('click', closePoUpSlider);
 }
 
@@ -22,11 +24,15 @@ function openPoUpSlider (e){
     case 'light':
       slider.addLightSlider(elem);
       break;
+    case 'floor':
+      slider.addFloorSlider(elem);
+      break;
     default:
       slider.addDefaultInfo();
   }
   popUp.style.transformOrigin = `${util.getCenterXElemPos(elem)}px ${util.getCenterYElemPos(elem)}px`;
   popUp.classList.toggle('popup--off');
+  footer.classList.toggle('page-footer--off');
   btnCls.addEventListener('click', closePoUpSlider);
 }
 

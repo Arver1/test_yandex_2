@@ -30,6 +30,11 @@ const controlBtnLight = `
 <button class="next-function-slider__btn btn btn--size light-even">Вечерний свет</button>
 </div>`;
 
+const sliderThermostat = `
+<div class="thermostat">
+<div class="thermostat__item"
+</div>`;
+
 function checkRepeatTextContent(elem, content) {
   if(elem.textContent === content) {
     return;
@@ -39,7 +44,7 @@ function checkRepeatTextContent(elem, content) {
 
 function addTitleAndDescription(elem, btnPanel, sliderSample) {
   const title = elem.querySelector('h3').textContent;
-  const description = elem.querySelector('p').textContent;
+  const description = elem.querySelector('p') === null ? null : elem.querySelector('p').textContent;
   checkRepeatTextContent(sliderTitle, title);
   checkRepeatTextContent(sliderDescription, description);
   sliderControlPanel.innerHTML = btnPanel;
@@ -114,8 +119,45 @@ function setValueOnSlider(slider, value = 0) {
   slider.disabled = true;
 }
 
+function addFloorSlider(elem) {
+  addTitleAndDescription(elem, '', sliderThermostat);
+  const termostat = slider.querySelector('.thermostat');
+  const center = {
+    x: util.getCenterXElemPos(termostat),
+    y: util.getCenterYElemPos(termostat),
+  };
+  slider.addEventListener('mousedown', (e) => {
+    if(!e.target.classList.contains('thermostat__item')) {
+      return;
+    }
+    const startCoords = {
+      x: e.clientX,
+      y: e.clientY,
+    };
+    function moveShim(e) {
+      const offset = {
+        x: e.clientX,
+        y: e.clientY,
+      };
+      const angle = util.anglePoint(startCoords, center, offset);
+      if(offset.x > startCoords.x) {
+        termostat.style.transform = `rotate(${Math.round(angle * 180 / 3.14)}deg)`
+      } else {
+        termostat.style.transform = `rotate(-${Math.round(angle * 180 / 3.14)}deg)`
+      }
+    }
+    function stopShim(e) {
+      document.removeEventListener('mousemove', moveShim);
+      document.removeEventListener('mouseup', stopShim);
+    }
+    document.addEventListener('mousemove', moveShim);
+    document.addEventListener('mouseup', stopShim);
+  })
+}
+
 export default {
   addTempSlider,
   addLightSlider,
-  addDefaultInfo
+  addDefaultInfo,
+  addFloorSlider
 }
