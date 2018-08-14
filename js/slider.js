@@ -32,7 +32,14 @@ const controlBtnLight = `
 
 const sliderThermostat = `
 <div class="thermostat">
-<div class="thermostat__item"
+<svg class="thermostat__scale" width="270" height="270">
+<circle class="thermostat__scale-blank" r="98" cx="50%" cy="50%" stroke-dasharray="1 4" stroke-width="21" stroke-dashoffset="4"></circle>
+<circle r="98" cx="50%" cy="50%" stroke-width="22" fill="none" stroke="#fff" stroke-dasharray="105 3000"></circle>
+<circle class="thermostat__scale-fill" r="98" cx="50%" cy="50%" stroke-dasharray="0 0 0 110 0 3000" stroke-width="21" stroke-dashoffset="4"></circle>
+<circle class="thermostat__scale-wrapper" r="100" cx="50%" cy="50%" stroke-width="40" stroke="transparent" fill="none"></circle>
+</svg>
+<input class="thermostat__field" type="hidden" value="0" name="thermostat">
+<div class="thermostat__wrapper"><span class="thermostat__value">23</span></div>
 </div>`;
 
 function checkRepeatTextContent(elem, content) {
@@ -122,37 +129,35 @@ function setValueOnSlider(slider, value = 0) {
 function addFloorSlider(elem) {
   addTitleAndDescription(elem, '', sliderThermostat);
   const termostat = slider.querySelector('.thermostat');
-  const center = {
-    x: util.getCenterXElemPos(termostat),
-    y: util.getCenterYElemPos(termostat),
-  };
-  slider.addEventListener('mousedown', (e) => {
-    if(!e.target.classList.contains('thermostat__item')) {
+  slider.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('thermostat__scale-wrapper')) {
       return;
     }
-    const startCoords = {
-      x: e.clientX,
-      y: e.clientY,
+    console.log('click');
+    const center = {
+      x: util.getCenterXElemPos(termostat),
+      y: util.getCenterYElemPos(termostat)
     };
-    function moveShim(e) {
-      const offset = {
-        x: e.clientX,
-        y: e.clientY,
-      };
-      const angle = util.anglePoint(startCoords, center, offset);
-      if(offset.x > startCoords.x) {
-        termostat.style.transform = `rotate(${Math.round(angle * 180 / 3.14)}deg)`
-      } else {
-        termostat.style.transform = `rotate(-${Math.round(angle * 180 / 3.14)}deg)`
-      }
+    const startCoords = {
+      x: center.x,
+      y: termostat.getBoundingClientRect().bottom,
+    };
+    const offset = {
+      x: e.clientX,
+      y: e.clientY
+    };
+    const angle = util.anglePoint(startCoords, center, offset);
+    let amount = Math.floor((angle - 30) / 2.8);
+    if(amount > 50) {
+      amount -= 2;
+    } else if (amount > 80) {
+      amount -= 5;
     }
-    function stopShim(e) {
-      document.removeEventListener('mousemove', moveShim);
-      document.removeEventListener('mouseup', stopShim);
-    }
-    document.addEventListener('mousemove', moveShim);
-    document.addEventListener('mouseup', stopShim);
-  })
+    const arr = [...new Array(amount)].fill('1.5 3.5');
+    const str = arr.join(' ');
+    const final = slider.querySelector('.thermostat__scale-fill');
+    final.style.strokeDasharray = `0 110 ${str} 0 3000`;
+  });
 }
 
 export default {

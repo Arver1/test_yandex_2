@@ -1,23 +1,46 @@
 .thermostat {
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  background-color: #f76b1c;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  &__item {
-    position: absolute;
-    width: 2px;
-    height: 280px;
-    background-color: #068fff;
-    left: 50%;
+  &__scale {
     animation-fill-mode: forwards;
-    cursor: pointer;
+    transform: rotate(60deg);
   }
-  &__item:before {
-    content: '';
+  &__scale-blank {
+    fill: none;
+    stroke: #333333;
+  }
+  &__scale-fill {
+    fill: none;
+    stroke: #F5A623;
+    z-index: 10;
+  }
+  &__value {
+    position: absolute;
+    .font(66px; 76px);
+    font-size: 66px;
+    padding-left: 40px;
+  }
+  &__value::before {
+    content: '+';
     display: block;
-    width: 10px;
-    height: 10px;
-    background-color: #FFB100;
+    position: absolute;
+    left: 0;
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 173px;
+    height: 173px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px 0;
+  }
+  &__scale-wrapper {
+    cursor: pointer;
+    z-index: 150;
   }
 }
