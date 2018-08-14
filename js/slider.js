@@ -135,7 +135,6 @@ function addFloorSlider(elem) {
     if (!e.target.classList.contains('thermostat__scale-wrapper')) {
       return;
     }
-    console.log('click');
     const center = {
       x: util.getCenterXElemPos(termostat),
       y: util.getCenterYElemPos(termostat)
@@ -144,24 +143,26 @@ function addFloorSlider(elem) {
       x: center.x,
       y: termostat.getBoundingClientRect().bottom,
     };
-    const offset = {
-      x: e.clientX,
-      y: e.clientY
-    };
-    const angle = util.anglePoint(startCoords, center, offset);
-    let amount = Math.floor((angle - 30) / 2.8);
-    if(amount > 50) {
-      amount -= 2;
-    } else if (amount > 80) {
-      amount -= 5;
+    if(center.x) {
+      const offset = {
+        x: e.clientX,
+        y: e.clientY
+      };
+      const angle = util.anglePoint(startCoords, center, offset);
+      let amount = Math.floor((angle - 30) / 2.8);
+      if(amount > 50) {
+        amount -= 2;
+      } else if (amount > 80) {
+        amount -= 5;
+      }
+      const arr = [...new Array(amount)].fill('1.5 3.5');
+      const str = arr.join(' ');
+      const final = slider.querySelector('.thermostat__scale-fill');
+      final.style.strokeDasharray = `0 110 ${str} 0 3000`;
+      const temperature = 3 + Math.floor(angle / 14.29);
+      termostatValue.textContent = temperature;
+      termostatField.value = temperature;
     }
-    const arr = [...new Array(amount)].fill('1.5 3.5');
-    const str = arr.join(' ');
-    const final = slider.querySelector('.thermostat__scale-fill');
-    final.style.strokeDasharray = `0 110 ${str} 0 3000`;
-    const temperature = 3 + Math.floor(angle / 14.29);
-    termostatValue.textContent = temperature;
-    termostatField.value = temperature;
   });
 }
 
