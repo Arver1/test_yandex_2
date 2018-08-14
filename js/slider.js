@@ -39,7 +39,7 @@ const sliderThermostat = `
 <circle class="thermostat__scale-wrapper" r="100" cx="50%" cy="50%" stroke-width="40" stroke="transparent" fill="none"></circle>
 </svg>
 <input class="thermostat__field" type="hidden" value="0" name="thermostat">
-<div class="thermostat__wrapper"><span class="thermostat__value">23</span></div>
+<div class="thermostat__wrapper"><span class="thermostat__value">5</span></div>
 </div>`;
 
 function checkRepeatTextContent(elem, content) {
@@ -129,6 +129,8 @@ function setValueOnSlider(slider, value = 0) {
 function addFloorSlider(elem) {
   addTitleAndDescription(elem, '', sliderThermostat);
   const termostat = slider.querySelector('.thermostat');
+  const termostatValue = slider.querySelector('.thermostat__value');
+  const termostatField = slider.querySelector('.thermostat__field');
   slider.addEventListener('click', (e) => {
     if (!e.target.classList.contains('thermostat__scale-wrapper')) {
       return;
@@ -157,6 +159,9 @@ function addFloorSlider(elem) {
     const str = arr.join(' ');
     const final = slider.querySelector('.thermostat__scale-fill');
     final.style.strokeDasharray = `0 110 ${str} 0 3000`;
+    const temperature = 3 + Math.floor(angle / 14.29);
+    termostatValue.textContent = temperature;
+    termostatField.value = temperature;
   });
 }
 
