@@ -3,7 +3,7 @@
   height: 136px;
   overflow: hidden;
   &--height {
-    height: 116px;
+    height: 102px;
   }
   &__items {
     margin: 0;
@@ -22,7 +22,6 @@
     box-sizing: border-box;
     background-color: #fff;
     padding: 15px 15px 9px;
-    margin-right: 20px;
     border-radius: 17px;
     cursor: pointer;
     top: 16px;
@@ -30,6 +29,15 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: flex-end;
+  }
+  &__items--height {
+    height: 120px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    position: static;
+  }
+  &__item + &__item {
+    margin-left: 20px;
   }
   &__title {
     .font();
@@ -44,8 +52,10 @@
     background-color: #F7F7F7;
   }
   &__item--size {
-    margin-right: 15px;
     height: 100px;
+  }
+  &__item--size +  &__item--size{
+    margin-left: 15px;
   }
   &__item--size:hover,
   &__item--size:active {
@@ -131,5 +141,47 @@
   #hall_devices:checked ~ &__menu-items &__menu-label--hall,
   #bulb_devices:checked ~ &__menu-items &__menu-label--bulb {
     color: #000;
+  }
+  @media @tablet_width {
+    &--vertical {
+      flex-shrink: 0;
+      min-height: 311px;
+      width: 200px;
+    }
+    &__items--vertical {
+      width: 220px;
+      height: 311px;
+      display: block;
+    }
+    &__item--vertical {
+      margin-bottom: 15px;
+      margin-right: 40px;
+    }
+    &__item--vertical + &__item--vertical{
+      margin-left: 0;
+    }
+    /*
+    &--flex-grid {
+      width: 630px;
+      min-height: auto;
+      max-height: 331px;
+    }
+    &__items--flex-grid {
+      display: flex;
+      flex-wrap: wrap;
+      overflow: visible;
+      width: inherit;
+      height: auto;
+    }
+    &__item--indent {
+      margin-right: 0;
+    }
+    &__item--indent {
+      margin-right: 0;
+    }
+    &__item--indent:nth-child(4n) {
+      margin-left: 0;
+    }
+    */
   }
 }

@@ -83,4 +83,41 @@
 	&__link:hover {
 	    color: #000;
 	}
+	@media @tablet_width {
+	    padding: 0 69px;
+	    box-sizing: border-box;
+	    &__wrapper {
+	        padding: 12px 0 0;
+	        border-bottom: 1px solid #F0F0F0;
+	        margin: 0 0 12px;
+	    }
+	    &__link-logo {
+	        margin-right: 34px;
+	    }
+	    &__menu-wrapper {
+	        flex-grow: 1;
+	    }
+	    &__wrapper label {
+	        display: none;
+	    }
+	    &__wrapper input:checked ~ &__items,
+	    &__items {
+	        display: flex;
+	        flex-wrap: wrap;
+	        width: auto;
+	        position: static;
+	        padding: 5px 20px;
+	    }
+	    &__item + &__item {
+	        margin-left: 30px;
+	    }
+	    &__link {
+	        .font(16px; 20px);
+	        opacity: 0.6;
+	    }
+	    &__link:hover,
+	    &__link:active {
+	        opacity: 1.0;
+	    }
+	}
 }

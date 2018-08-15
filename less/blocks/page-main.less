@@ -1,4 +1,10 @@
 .page-main {
   width: 320px;
   margin: 0 auto 68px; //пришлось сделать так как в 61px не умещается на мобильном
+  @media @tablet_width {
+    width: 768px;
+    &__wrapper {
+      padding: 0 69px;
+    }
+  }
 }

@@ -124,7 +124,7 @@
     <nav class="main-nav">
     	<div class="main-nav__wrapper">
 				<a class="main-nav__link-logo">
-    			<img src="img/Яндекс Дом@1x.png" srcset="img/ЯндексДом@2x.png 2x" alt="Логотип Яндекс Дом">
+    			<img src="img/ЯндексДом@1x.png" srcset="img/ЯндексДом@2x.png 2x" alt="Логотип Яндекс Дом">
     		</a>
 				<!--without js <button class="main-nav__toggle main-nav__toggle--open">Открыть меню</button> -->
 				<div class="main-nav__menu-wrapper">
@@ -142,39 +142,44 @@
   <main class="page-main">
   	<div class="page-main__wrapper">
   		<section class="main">
-  			<h2 class="main__title">Привет, Геннадий!</h2>
-  			<strong class="main__info">Двери и окна закрыты, сигнализация включена.</strong>
-  			<ul class="main__items">
-  				<li class="main__item">Дома<b class="main__data-temp">+23</b></li>
-  				<li class="main__item main__item--icon-rain">За окном
-						<b class="main__data-temp">
-							+19
-						</b>
-					</li>
-  			</ul>
-			<section class="next-scenarios-slider">
-				<ul class="next-scenarios-slider__items">
-					<li class="next-scenarios-slider__item popup-slider popup-slider--temp" tabindex="0">
-						<svg class="next-scenarios-slider__icon" width="24" height="24">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_temperature"></use>
-						</svg>
-						<h3 class="next-scenarios-slider__title">Philips Cooler</h3>
-						<p class="next-scenarios-slider__description">Начнет охлаждать в 16:30</p>
-					</li>
-					<li class="next-scenarios-slider__item popup-slider popup-slider--light" tabindex="0">
-						<svg class="next-scenarios-slider__icon" width="24" height="24">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun"></use>
-						</svg>
-						<h3 class="next-scenarios-slider__title">Xiaomi Yeelight LED Smart Bulb</h3>
-						<p class="next-scenarios-slider__description">Включится в 17:00</p>
-					</li>
-				</ul>
-			</section>
+			<h2 class="main__title">Главное</h2>
+			<div class="main__wrapper">
+				<section class="main__info">
+					<h3 class="main__greeting">Привет, Геннадий!</h3>
+					<strong class="main__message">Двери и окна закрыты, сигнализация включена.</strong>
+					<ul class="main__items">
+						<li class="main__item">Дома<b class="main__data-temp">+23</b></li>
+						<li class="main__item main__item--icon-rain">За окном
+							<b class="main__data-temp">
+								+19
+							</b>
+						</li>
+					</ul>
+				</section>
+				<section class="next-scenarios-slider next-scenarios-slider--vertical">
+					<ul class="next-scenarios-slider__items next-scenarios-slider__items--vertical">
+						<li class="next-scenarios-slider__item next-scenarios-slider__item--vertical popup-slider popup-slider--temp" tabindex="0">
+							<svg class="next-scenarios-slider__icon" width="24" height="24">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_temperature"></use>
+							</svg>
+							<h3 class="next-scenarios-slider__title">Philips Cooler</h3>
+							<p class="next-scenarios-slider__description">Начнет охлаждать в 16:30</p>
+						</li>
+						<li class="next-scenarios-slider__item next-scenarios-slider__item--vertical popup-slider popup-slider--light" tabindex="0">
+							<svg class="next-scenarios-slider__icon" width="24" height="24">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun"></use>
+							</svg>
+							<h3 class="next-scenarios-slider__title">Xiaomi Yeelight LED Smart Bulb</h3>
+							<p class="next-scenarios-slider__description">Включится в 17:00</p>
+						</li>
+					</ul>
+				</section>
+			</div>
   		</section>
   		<section class="feautured-scenarios">
 			<h2 class="feautured-scenarios__title">Избранные сценарии!</h2>
 			<section class="next-scenarios-slider next-scenarios-slider--height">
-				<ul class="next-scenarios-slider__items">
+				<ul class="next-scenarios-slider__items next-scenarios-slider__items--height">
 					<li class="next-scenarios-slider__item next-scenarios-slider__item--color next-scenarios-slider__item--size popup-slider popup-slider--light">
 						<svg class="next-scenarios-slider__icon next-scenarios-slider__icon--color" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun2"></use>
