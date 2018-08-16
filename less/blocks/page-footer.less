@@ -2,7 +2,6 @@
   width: 100%;
   position: fixed;
   left: 0;
-  bottom: 0;
   background-color: #fff;
   z-index: 200;
   &__wrapper {
@@ -30,6 +29,18 @@
   @media @tablet_width {
     &__wrapper {
       width: 630px;
+    }
+  }
+  @media @desktop_width {
+    width: 1366px;
+    position: static;
+    margin: 0 auto;
+    &__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0;
+      width: auto;
     }
   }
 }

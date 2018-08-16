@@ -8,6 +8,9 @@
   flex-direction: column;
   justify-content: flex-start;
   margin-bottom: 12px;
+  &__value-wrapper {
+    display: none;
+  }
   &__title {
     margin: 0 0 5px;
     .font(18px; 21px);
@@ -15,5 +18,43 @@
   &__description {
     margin: 0 0 15px;
     .font(12px; 14px; normal);
+  }
+  @media @tablet_width {
+    width: 630px;
+    flex-shrink: 0;
+    padding: 26px 25px 25px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    &__title {
+      .font(27px; 31px);
+      margin-bottom: 6px;
+      width: 470px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+    &__description {
+      .font(14px; 16px);
+      margin-bottom: 20px;
+      flex-shrink: 0;
+      order: 2;
+    }
+    &__information {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    &__value-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      order: 1;
+    }
+    &__value {
+      .font(36px; 42px);
+    }
+    &__icon {
+      fill: #fff;
+    }
+  }
+  @media @desktop_width {
   }
 }

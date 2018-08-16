@@ -5,13 +5,28 @@ const sliderControlPanel = sliderContainer.querySelector('.next-function-slider_
 const sliderTitle = sliderContainer.querySelector('.slider__title');
 const sliderDescription = sliderContainer.querySelector('.slider__description');
 const slider = document.querySelector('.slider__item');
+const sliderValue = sliderContainer.querySelector('.slider__value-wrapper');
 
 const controlBtnTemp = `
 <div class="next-function-slider__control-panel-wrapper">
 <button class="next-function-slider__btn btn btn--size btn--color temperature-hand">Вручную</button>
 <button class="next-function-slider__btn btn btn--size temperature-cold">Холодно</button>
-<button class="next-function-slider__btn btn btn--size temperature-warm">Тепло</button>
+<button class="next-function-slider__btn btn btn--size temperature-middle">Тепло</button>
+<button class="next-function-slider__btn btn btn--size temperature-warm">Жарко</button>
 </div>`;
+
+const valueTemp = `
+<span class="slider__value">0</span>
+<svg class="slider__icon" width="40" height="40">
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_temperature_2"></use>
+</svg>
+`;
+
+const valueLight = `
+<svg class="slider__icon-light" width="40" height="40">
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun2"></use>
+</svg>
+`;
 
 const sliderTemp = `
 <div class="next-function-slider__range-wrapper">
@@ -28,6 +43,7 @@ const controlBtnLight = `
 <button class="next-function-slider__btn btn btn--size btn--color light-hand">Вручную</button>
 <button class="next-function-slider__btn btn btn--size light-day">Дневной свет</button>
 <button class="next-function-slider__btn btn btn--size light-even">Вечерний свет</button>
+<button class="next-function-slider__btn btn btn--size light-morn">Рассвет</button>
 </div>`;
 
 const sliderThermostat = `
@@ -49,19 +65,40 @@ function checkRepeatTextContent(elem, content) {
   elem.textContent = content;
 }
 
-function addTitleAndDescription(elem, btnPanel, sliderSample) {
+function addTitleAndDescription(elem, btnPanel, sliderSample, mode) {
   const title = elem.querySelector('h3').textContent;
   const description = elem.querySelector('p') === null ? null : elem.querySelector('p').textContent;
   checkRepeatTextContent(sliderTitle, title);
   checkRepeatTextContent(sliderDescription, description);
   sliderControlPanel.innerHTML = btnPanel;
   slider.innerHTML = sliderSample;
+  if(mode === 'light') {
+    sliderValue.innerHTML = valueLight;
+  } else {
+    sliderValue.innerHTML = valueTemp;
+  }
 }
 
 function addTempSlider(elem) {
   addTitleAndDescription(elem, controlBtnTemp, sliderTemp);
   sliderControlPanel.addEventListener('click', controlTempSlider);
   sliderControlPanel.addEventListener('keydown', controlEnterTempSlider);
+  const range = slider.querySelector('.next-function-slider__range');
+  range.addEventListener('change', changeTempValue);
+}
+
+function changeTempValue(e) {
+  const value = sliderValue.querySelector('.slider__value');
+  if(e.target.value < 0) {
+    value.textContent = `${e.target.value}`;
+    return;
+  }
+  value.textContent = `+${e.target.value}`;
+}
+
+function changeLightValue(e) {
+  const icon = sliderValue.querySelector('.slider svg');
+  icon.style.opacity = e.target.value / 1000 + 0.2;
 }
 
 function addDefaultInfo() {
@@ -74,23 +111,32 @@ function addDefaultInfo() {
 }
 
 function addLightSlider(elem) {
-  addTitleAndDescription(elem, controlBtnLight, sliderLight);
+  addTitleAndDescription(elem, controlBtnLight, sliderLight, 'light');
   sliderControlPanel.addEventListener('click', controlLightSlider);
   sliderControlPanel.addEventListener('keydown', controlEnterLightSlider);
+  const range = slider.querySelector('.next-function-slider__range');
+  range.addEventListener('change', changeLightValue);
 }
 
 function controlTempSlider(e) {
   const typeAction = [...(e.target.classList)].join().replace(/\D+temperature-/, '');
   const tempSlider = sliderContainer.querySelector('.next-function-slider__range');
+  const event =  new Event('change');
   switch(typeAction) {
     case 'cold':
       setValueOnSlider(tempSlider, -10);
+      tempSlider.dispatchEvent(event);
       break;
     case 'warm':
       setValueOnSlider(tempSlider, 30);
+      tempSlider.dispatchEvent(event);
       break;
     case 'hand':
       tempSlider.disabled = false;
+      break;
+    case 'middle':
+      setValueOnSlider(tempSlider, 20);
+      tempSlider.dispatchEvent(event);
       break;
   }
 }
@@ -103,12 +149,19 @@ function controlEnterTempSlider(e) {
 function controlLightSlider(e) {
   const typeAction = [...(e.target.classList)].join().replace(/\D+light-/, '');
   const tempSlider = sliderContainer.querySelector('.next-function-slider__range');
+  const event =  new Event('change');
   switch(typeAction) {
     case 'day':
       setValueOnSlider(tempSlider, 1000);
+      tempSlider.dispatchEvent(event);
       break;
     case 'even':
+      setValueOnSlider(tempSlider, 500);
+      tempSlider.dispatchEvent(event);
+      break;
+    case 'morn':
       setValueOnSlider(tempSlider, 10);
+      tempSlider.dispatchEvent(event);
       break;
     case 'hand':
       tempSlider.disabled = false;

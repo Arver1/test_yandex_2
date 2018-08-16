@@ -60,4 +60,13 @@
   #all_devices:checked ~ &__menu-wrapper &__menu::after {
     background-color: #858585;
   }
+  @media @desktop_width {
+    flex-grow: 1;
+    &__title {
+      margin-right: 13px;
+    }
+    &__menu-wrapper {
+      justify-content: flex-start;
+    }
+  }
 }
