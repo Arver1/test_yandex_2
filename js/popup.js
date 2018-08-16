@@ -4,11 +4,15 @@ import slider from './slider';
 const popUp = document.querySelector('.popup');
 const btnCls = popUp.querySelector('.cls');
 const footer = document.querySelector('.page-footer');
+const sliderControlPanel = document.querySelector('.next-function-slider__control-panel');
 
 function closePoUpSlider(e) {
   popUp.classList.toggle('popup--off');
   footer.classList.toggle('page-footer--off');
   e.target.removeEventListener('click', closePoUpSlider);
+  if(sliderControlPanel.classList.contains('next-function-slider__control-panel--off')) {
+    sliderControlPanel.classList.toggle('next-function-slider__control-panel--off');
+  }
 }
 
 function openPoUpSlider (e){
@@ -26,6 +30,7 @@ function openPoUpSlider (e){
       break;
     case 'floor':
       slider.addFloorSlider(elem);
+      sliderControlPanel.classList.toggle('next-function-slider__control-panel--off');
       break;
     default:
       slider.addDefaultInfo();

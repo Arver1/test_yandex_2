@@ -203,7 +203,9 @@ function addFloorSlider(elem) {
       };
       const angle = util.anglePoint(startCoords, center, offset);
       let amount = Math.floor((angle - 30) / 2.8);
-      if(amount > 50) {
+      if(amount < 0) {
+        amount = 0;
+      } else if(amount > 50) {
         amount -= 2;
       } else if (amount > 80) {
         amount -= 5;
@@ -212,9 +214,12 @@ function addFloorSlider(elem) {
       const str = arr.join(' ');
       const final = slider.querySelector('.thermostat__scale-fill');
       final.style.strokeDasharray = `0 110 ${str} 0 3000`;
-      const temperature = 3 + Math.floor(angle / 14.29);
+      let temperature = 3 + Math.floor(angle / 14.29);
+      temperature = temperature > 25 ? 25 : temperature;
       termostatValue.textContent = temperature;
       termostatField.value = temperature;
+      const value = sliderValue.querySelector('.slider__value');
+      value.textContent = `+${temperature}`;
     }
   });
 }
