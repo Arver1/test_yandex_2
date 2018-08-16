@@ -1,6 +1,9 @@
 .feautured-devices {
   margin-bottom: 3px;
   position: relative;
+  &__controls {
+    display: none;
+  }
   &__title {
     .font(18px; 21px);
     margin: 0 0 4px;
@@ -84,6 +87,35 @@
     }
     #all_devices:checked ~ &__menu-wrapper &__menu {
       color: #000;
+    }
+    &__controls {
+      display: block;
+      position: absolute;
+      top: 12px;
+      right: 0;
+    }
+    &__controls--off {
+      display: none;
+    }
+    &__control:hover,
+    &__control:active {
+      fill: #333333;
+    }
+    &__control--off,
+    &__control--off:hover,
+    &__control--off:active {
+      fill: #bcbcbc;
+    }
+    &__control--right {
+      transform: rotate(-90deg);
+      right: 2px;
+    }
+    &__control--left {
+      right: 14px;
+      transform: rotate(90deg);
+    }
+    &__control {
+      cursor: pointer;
     }
   }
 }

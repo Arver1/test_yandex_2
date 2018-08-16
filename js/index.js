@@ -14,6 +14,11 @@ const leftArrow = gridControl.querySelector('.feautured-scenarios__grid-control-
 const rightArrow = gridControl.querySelector('.feautured-scenarios__grid-control--right');
 const gridSlides =  document.querySelectorAll('.next-scenarios-slider__item--grid');
 const gridSlidesLength = gridSlides.length;
+const levelControl = document.querySelector('.feautured-devices__controls');
+const feautureLeftArrow = levelControl.querySelector('.feautured-devices__control--left');
+const feautureRightArrow = levelControl.querySelector('.feautured-devices__control--right');
+const levelSlides =  document.querySelectorAll('.next-scenarios-slider__item--level');
+const levelSlidesLength = levelSlides.length;
 
 addEventKeyOnMenu(mainMenu, menuControl);
 addEventKeyOnMenu(devicesMenu, devicesMenuControl);
@@ -44,5 +49,11 @@ if(gridSlidesLength > 9) {
   leftArrow.classList.toggle('feautured-scenarios__grid-control--off');
   rightArrow.addEventListener('click', slider.browseFavoriteScenarios);
   leftArrow.addEventListener('click', slider.browseFavoriteScenarios);
+}
+
+feautureLeftArrow.classList.toggle('feautured-devices__control--off');
+if(levelSlidesLength >= 7) {
+  levelControl.classList.toggle('feautured-devices__controls--off');
+  feautureRightArrow.addEventListener('click', slider.browseFavoriteDevices);
 }
 

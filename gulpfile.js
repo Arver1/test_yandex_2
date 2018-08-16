@@ -51,7 +51,7 @@ gulp.task('serv', () => {
   browserSync.watch('css/*.css').on('change', browserSync.reload);
   browserSync.watch('*.html').on('change', browserSync.reload);
   browserSync.watch('img/*.*').on('all', browserSync.reload);
-  //browserSync.watch('js/**/*.js').on('all', gulp.series('webpack'));
+  browserSync.watch('js/**/*.js').on('all', gulp.series('webpack'));
 });
 
 gulp.task('watch', () => {
@@ -92,6 +92,12 @@ gulp.task('css', () =>
     .pipe(gulp.dest('public/css'))
 );
 
+gulp.task('js', () =>
+  gulp.src('js/main.js', {since: gulp.lastRun('js')})
+    .pipe(gulpNewer('public/js'))
+    .pipe(gulp.dest('public/js'))
+);
+
 gulp.task('mincss', () =>
   gulp.src('css/style.css', {since: gulp.lastRun('css')})
     .pipe(cssnano())
@@ -108,6 +114,6 @@ gulp.task('webpack', function(callback) {
   });
 });
 
-gulp.task('build', gulp.series('clean', gulp.parallel('img','html'),'less', 'mincss', 'css'));
+gulp.task('build', gulp.series('clean', gulp.parallel('img','html'),'less', 'mincss', 'css', 'webpack', 'js'));
 
 gulp.task('dev', gulp.series('less', gulp.parallel('serv','watch')));

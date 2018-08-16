@@ -304,6 +304,18 @@ function browseFavoriteScenariosRight(e){
   nextElement.classList.toggle('next-scenarios-slider__items--grid-off');
 }
 
+const sectionLevelSlides = document.querySelector('.next-scenarios-slider__items--level');
+const levelControl = document.querySelector('.feautured-devices__controls');
+const feautureLeftArrow = levelControl.querySelector('.feautured-devices__control--left');
+const feautureRightArrow = levelControl.querySelector('.feautured-devices__control--right');
+
+function browseFavoriteDevices(e) {
+  sectionLevelSlides.scrollLeft += 153;
+  if(sectionLevelSlides.scrollLeft !== 0){
+    feautureLeftArrow.classList.toggle('feautured-devices__control--off');
+  }
+}
+
 export default {
   addTempSlider,
   addLightSlider,
@@ -311,5 +323,5 @@ export default {
   addFloorSlider,
   distributeGridSlides,
   browseMainScenarios,
-  browseFavoriteScenarios
+  browseFavoriteDevices
 }
