@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 	<meta name="keywords" content="Яндекс дом, умный дом, автоматизация дома">
 	<meta name="description" content="Умный дом от Яндекс — это комплекс решений для автоматизации повседневных действий, который избавит вас от рутины.">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-  <svg style="display: none">
+  <svg style="display: none ">
 		<symbol id="icon_temperature" viewBox="0 0 24 24">
 			<g id="Final" stroke="none" stroke-width="1" fill-opacity="0" fill-rule="evenodd">
 				<g id="v1-2-1-home-dashboard" transform="translate(-464.000000, -269.000000)">
@@ -118,6 +118,12 @@
 				</g>
 			</g>
 		</symbol>
+	  <symbol id="icon_arrow_double" viewBox="0 0 16 16">
+		  <path d="M8,1 C8.4120206,1 8.67869581,1.16820615 9.01804372,1.50755406 L14.7437184,7.23322877 C15.0854272,7.57493753 15.0854272,8.12895688 14.7437184,8.47066564 C14.4020097,8.8123744 13.8479903,8.8123744 13.5062816,8.47066564 L8,2.96438407 L2.49371843,8.47066564 C2.15200968,8.8123744 1.59799032,8.8123744 1.25628157,8.47066564 C0.914572811,8.12895688 0.914572811,7.57493753 1.25628157,7.23322877 L7.00240491,1.48710543 C7.33493661,1.15457373 7.5879794,1 8,1 Z M8,7 C8.4120206,7 8.67869581,7.16820615 9.01804372,7.50755406 L14.7437184,13.2332288 C15.0854272,13.5749375 15.0854272,14.1289569 14.7437184,14.4706656 C14.4020097,14.8123744 13.8479903,14.8123744 13.5062816,14.4706656 L8,8.96438407 L2.49371843,14.4706656 C2.15200968,14.8123744 1.59799032,14.8123744 1.25628157,14.4706656 C0.914572811,14.1289569 0.914572811,13.5749375 1.25628157,13.2332288 L7.00240491,7.48710543 C7.33493661,7.15457373 7.5879794,7 8,7 Z" id="path-1"></path>
+	  </symbol>
+	  <symbol id="icon_arrow" viewBox="0 0 16 16">
+		  <path d="M7.5,11.7269472 C7.11373069,11.7269472 6.87650307,11.5723735 6.5647546,11.2398418 L1.17776397,5.49371843 C0.85741201,5.15200968 0.85741201,4.59799032 1.17776397,4.25628157 C1.49811593,3.91457281 2.01750907,3.91457281 2.33786103,4.25628157 L7.5,9.76256313 L12.662139,4.25628157 C12.9824909,3.91457281 13.5018841,3.91457281 13.822236,4.25628157 C14.142588,4.59799032 14.142588,5.15200968 13.822236,5.49371843 C13.822236,5.49371843 10.2436893,9.31083491 8.45441599,11.2193931 C8.13627732,11.5587411 7.88626931,11.7269472 7.5,11.7269472 Z" id="path-1"></path>
+	  </symbol>
 	</svg>
   <header class="page-header">
     <h1 class="visually-hidden">Яндекс дом</h1>
@@ -172,40 +178,65 @@
 							<h3 class="next-scenarios-slider__title">Xiaomi Yeelight LED Smart Bulb</h3>
 							<p class="next-scenarios-slider__description">Включится в 17:00</p>
 						</li>
+						<li class="next-scenarios-slider__item next-scenarios-slider__item--vertical popup-slider popup-slider--light" tabindex="0">
+							<svg class="next-scenarios-slider__icon" width="24" height="24">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun"></use>
+							</svg>
+							<h3 class="next-scenarios-slider__title">Xiaomi Yeelight LED Smart Bulb</h3>
+							<p class="next-scenarios-slider__description">Включится в 17:00</p>
+						</li>
+						<li class="next-scenarios-slider__item next-scenarios-slider__item--vertical popup-slider popup-slider--light" tabindex="0">
+							<svg class="next-scenarios-slider__icon" width="24" height="24">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun"></use>
+							</svg>
+							<h3 class="next-scenarios-slider__title">Xiaomi Yeelight LED Smart Bulb</h3>
+							<p class="next-scenarios-slider__description">Включится в 17:00</p>
+						</li>
 					</ul>
+					<svg class="next-scenarios-slider__control next-scenarios-slider__control--off" width="16" height="16">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_arrow_double"></use>
+					</svg>
 				</section>
 			</div>
   		</section>
   		<section class="feautured-scenarios">
 			<h2 class="feautured-scenarios__title">Избранные сценарии!</h2>
-			<section class="next-scenarios-slider next-scenarios-slider--height">
-				<ul class="next-scenarios-slider__items next-scenarios-slider__items--height">
-					<li class="next-scenarios-slider__item next-scenarios-slider__item--color next-scenarios-slider__item--size popup-slider popup-slider--light">
+			<div class="feautured-scenarios__grid-controls feautured-scenarios__grid-controls--off">
+				<svg class="feautured-scenarios__grid-control feautured-scenarios__grid-control--left" width="16" height="16">
+					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_arrow"></use>
+				</svg>
+				<svg class="feautured-scenarios__grid-control feautured-scenarios__grid-control--right" width="16" height="16">
+					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_arrow"></use>
+				</svg>
+			</div>
+			<section class="next-scenarios-slider next-scenarios-slider--height next-scenarios-slider--grid">
+				<ul class="next-scenarios-slider__items next-scenarios-slider__items--height next-scenarios-slider__items--grid">
+					<li class="next-scenarios-slider__item next-scenarios-slider__item--size next-scenarios-slider__item--grid popup-slider popup-slider--light">
 						<svg class="next-scenarios-slider__icon next-scenarios-slider__icon--color" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun2"></use>
 						</svg>
 						<h3 class="next-scenarios-slider__title">Выключить весь свет в доме и во дворе</h3>
 					</li>
-					<li class="next-scenarios-slider__item next-scenarios-slider__item--color next-scenarios-slider__item--size popup-slider popup-slider--light">
+					<li class="next-scenarios-slider__item next-scenarios-slider__item--size next-scenarios-slider__item--grid popup-slider popup-slider--light">
 						<svg class="next-scenarios-slider__icon next-scenarios-slider__icon--color" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_scheduled"></use>
 						</svg>
 						<h3 class="next-scenarios-slider__title">Я ухожу</h3>
 					</li>
-					<li class="next-scenarios-slider__item next-scenarios-slider__item--color next-scenarios-slider__item--size popup-slider popup-slider--light">
+					<li class="next-scenarios-slider__item next-scenarios-slider__item--size next-scenarios-slider__item--grid popup-slider popup-slider--light">
 						<svg class="next-scenarios-slider__icon next-scenarios-slider__icon--color" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_sun2"></use>
 						</svg>
 						<h3 class="next-scenarios-slider__title">Включить свет в коридоре</h3>
 					</li>
-					<li class="next-scenarios-slider__item next-scenarios-slider__item--color next-scenarios-slider__item--size popup-slider popup-slider--temp">
+					<li class="next-scenarios-slider__item next-scenarios-slider__item--size next-scenarios-slider__item--grid popup-slider popup-slider--temp">
 						<svg class="next-scenarios-slider__icon next-scenarios-slider__icon--color" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_temperature_2"></use>
 						</svg>
 						<h3 class="next-scenarios-slider__title">Набрать горячую ванну</h3>
 						<p class="next-scenarios-slider__description">Начнется в 18:00</p>
 					</li>
-					<li class="next-scenarios-slider__item next-scenarios-slider__item--color next-scenarios-slider__item--size popup-slider popup-slider--floor">
+					<li class="next-scenarios-slider__item next-scenarios-slider__item--size next-scenarios-slider__item--grid popup-slider popup-slider--floor">
 						<svg class="next-scenarios-slider__icon next-scenarios-slider__icon--color" width="24" height="24">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_temperature_2"></use>
 						</svg>

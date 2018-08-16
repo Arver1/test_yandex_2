@@ -1,5 +1,8 @@
 .feautured-scenarios {
   margin-bottom: 31px;
+  &__grid-controls {
+    display: none;
+  }
   &__title {
     .font(18px; 21px);
     margin: 0 0 20px;
@@ -8,6 +11,44 @@
   @media @tablet_width {
     &__title {
       .font(18px; 21px;);
+    }
+  }
+  @media @desktop_width {
+    flex-basis: 630px;
+    position: relative;
+    &__title {
+      padding-right: 32px;
+    }
+    &__grid-control {
+      position: absolute;
+      fill: #bcbcbc;
+      top: 1px;
+      cursor: pointer;
+    }
+    &__grid-controls {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    &__grid-controls--off {
+      display: none;
+    }
+    &__grid-control:hover,
+    &__grid-control:active {
+      fill: #333333;
+    }
+    &__grid-control--off:hover,
+    &__grid-control--off:active {
+      fill: #bcbcbc;
+    }
+    &__grid-control--right {
+      transform: rotate(-90deg);
+      right: 2px;
+    }
+    &__grid-control--left {
+      right: 14px;
+      transform: rotate(90deg);
     }
   }
 }

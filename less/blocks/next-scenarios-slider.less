@@ -2,6 +2,9 @@
   position: relative;
   height: 136px;
   overflow: hidden;
+  &__control {
+    display: none;
+  }
   &--height {
     height: 102px;
   }
@@ -20,7 +23,7 @@
     width: 200px;
     height: 120px;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: #F7F7F7;
     padding: 15px 15px 9px;
     border-radius: 17px;
     cursor: pointer;
@@ -31,7 +34,7 @@
     justify-content: flex-end;
   }
   &__items--height {
-    height: 120px;
+    height: 124px;
     overflow-y: hidden;
     overflow-x: auto;
     position: static;
@@ -47,9 +50,6 @@
     margin: 0 0 5px;
     padding: 0;
     .font(12px; 14px; normal; #858585);
-  }
-  &__item--color {
-    background-color: #F7F7F7;
   }
   &__item--size {
     height: 100px;
@@ -149,39 +149,76 @@
       width: 200px;
     }
     &__items--vertical {
-      width: 220px;
+      width: 240px;
       height: 311px;
       display: block;
+      position: static;
+      overflow-y: scroll;
+      overflow-x: hidden;
     }
     &__item--vertical {
       margin-bottom: 15px;
-      margin-right: 40px;
     }
     &__item--vertical + &__item--vertical{
       margin-left: 0;
     }
-    /*
-    &--flex-grid {
+  }
+  @media @desktop_width {
+    &--grid {
       width: 630px;
-      min-height: auto;
-      max-height: 331px;
-    }
-    &__items--flex-grid {
+      height: 331px;
       display: flex;
+      align-items: flex-start;
+    }
+    &__items--grid {
+      display: flex;
+      flex-shrink: 0;
       flex-wrap: wrap;
-      overflow: visible;
-      width: inherit;
       height: auto;
+      margin-right: 10px;
+      transition-duration: 1s;
+      transform: scale(1);
+      position: static;
     }
-    &__item--indent {
-      margin-right: 0;
+    &__items--grid-off {
+      transition-duration: 1s;
+      transform: scale(0);
+      position: absolute;
     }
-    &__item--indent {
-      margin-right: 0;
+    &__items--vertical {
+      flex-basis: 630px;
     }
-    &__item--indent:nth-child(4n) {
+    &__control {
+      display: block;
+      position: absolute;
+      fill: #BCBCBC;
+      bottom: 12px;
+      left: 90px;
+      cursor: pointer;
+    }
+    &__control--off {
+      display: none;
+    }
+    &__control--up {
+      transform: rotate(180deg);
+    }
+    &__item--size {
+      margin-bottom: 14px;
+    }
+    &__item--size:nth-child(3n + 1) {
       margin-left: 0;
     }
-    */
+
+    /*
+&__item--indent {
+  margin-right: 0;
+}
+&__item--indent {
+  margin-right: 0;
+}
+&__item--indent:nth-child(4n) {
+  margin-left: 0;
+}
+*/
   }
 }
