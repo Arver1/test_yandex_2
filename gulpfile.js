@@ -51,7 +51,7 @@ gulp.task('serv', () => {
   browserSync.watch('css/*.css').on('change', browserSync.reload);
   browserSync.watch('*.html').on('change', browserSync.reload);
   browserSync.watch('img/*.*').on('all', browserSync.reload);
-  browserSync.watch('js/**/*.js').on('all', gulp.series('webpack'));
+  //browserSync.watch('js/**/*.js').on('all', gulp.series('webpack'));
 });
 
 gulp.task('watch', () => {

@@ -54,7 +54,7 @@ const sliderThermostat = `
 <circle class="thermostat__scale-fill" r="98" cx="50%" cy="50%" stroke-dasharray="0 0 0 110 0 3000" stroke-width="21" stroke-dashoffset="4"></circle>
 <circle class="thermostat__scale-wrapper" r="100" cx="50%" cy="50%" stroke-width="40" stroke="transparent" fill="none"></circle>
 </svg>
-<input class="thermostat__field" type="hidden" value="0" name="thermostat">
+<input class="thermostat__field" type="hidden" value="5" name="thermostat">
 <div class="thermostat__wrapper"><span class="thermostat__value">5</span></div>
 </div>`;
 

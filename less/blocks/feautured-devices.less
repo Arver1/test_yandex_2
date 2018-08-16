@@ -61,12 +61,29 @@
     background-color: #858585;
   }
   @media @desktop_width {
-    flex-grow: 1;
+    width: 100%;
     &__title {
       margin-right: 13px;
+      width: 213px;
     }
     &__menu-wrapper {
       justify-content: flex-start;
+      padding-right: 1060px;
+    }
+    &__menu {
+      padding: 7px 16px 8px;
+    }
+    &__menu:hover,
+    &__menu:active {
+      color: #000;
+    }
+    &__menu::before,
+    &__menu::after {
+      content: '';
+      display: none;
+    }
+    #all_devices:checked ~ &__menu-wrapper &__menu {
+      color: #000;
     }
   }
 }

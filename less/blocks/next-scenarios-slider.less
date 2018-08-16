@@ -75,7 +75,7 @@
   & > input {
     display: none;
   }
-  #all_devices:checked ~ & &__menu-items {
+  #all_devices:checked ~ &__menu-items {
     display: block;
   }
   .cam,
@@ -84,16 +84,16 @@
   .bulb {
     display: none;
   }
-  #kitchen_devices:checked ~ &__items .kitchen {
+  #kitchen_devices:checked ~ & &__items .kitchen {
     display: block;
   }
-  #cam_devices:checked ~ &__items .cam {
+  #cam_devices:checked ~ & &__items .cam {
     display: block;
   }
-  #hall_devices:checked ~ &__items .hall {
+  #hall_devices:checked ~ & &__items .hall {
     display: block;
   }
-  #bulb_devices:checked ~ &__items .bulb {
+  #bulb_devices:checked ~ & &__items .bulb {
     display: block;
   }
   &__menu-items {
@@ -106,7 +106,8 @@
     z-index: 10;
     background-color: #FFD93E;
     position: absolute;
-    top: 0;
+    top: 29px;
+    right: 10px;
     border-radius: 17px 0 17px 17px;
     box-shadow: 2px 0 20px -6px #000;
   }
@@ -170,6 +171,29 @@
       display: flex;
       align-items: flex-start;
     }
+    &__menu,
+    &__menu-items {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      background-color: transparent;
+      box-shadow: none;
+      width: auto;
+      top: 0;
+      left: 290px;
+      z-index: auto;
+    }
+    &__menu-label {
+      display: block;
+      border-radius: 17px;
+      padding: 7px 16px 8px;
+      margin-right: 10px;
+      .font(13px; 15px; bold; #000);
+      background-color: #F7F7F7;
+      position: relative;
+      cursor: pointer;
+    }
     &__items--grid {
       display: flex;
       flex-shrink: 0;
@@ -208,8 +232,18 @@
     &__item--size:nth-child(3n + 1) {
       margin-left: 0;
     }
-    &__menu-items {
+    #kitchen_devices:checked ~ &__menu-items &__menu-inf--kitchen,
+    #cam_devices:checked ~ &__menu-items &__menu-inf--cam,
+    #hall_devices:checked ~ &__menu-items &__menu-inf--hall,
+    #bulb_devices:checked ~ &__menu-items &__menu-inf--bulb {
       display: none;
+    }
+    #all_devices:checked ~ &__menu-items {
+      display: flex;
+    }
+    &__menu-label:hover,
+    &__menu-label:active {
+      color: #000;
     }
   }
 }
