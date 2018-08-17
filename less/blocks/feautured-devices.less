@@ -87,6 +87,13 @@
     }
     #all_devices:checked ~ &__menu-wrapper &__menu {
       color: #000;
+      outline: none;
+      border: none;
+    }
+    #all_devices:not(:checked) ~ &__menu-wrapper &__menu {
+      background-color: #f7f7f7;
+      outline: none;
+      border: none;
     }
     &__controls {
       display: block;

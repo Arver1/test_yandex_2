@@ -51,11 +51,18 @@ gulp.task('serv', () => {
   browserSync.watch('css/*.css').on('change', browserSync.reload);
   browserSync.watch('*.html').on('change', browserSync.reload);
   browserSync.watch('img/*.*').on('all', browserSync.reload);
-  browserSync.watch('js/**/*.js').on('all', gulp.series('webpack'));
+  browserSync.watch('js/index.js').on('change', gulp.series('webpack', 'reload'));
+  browserSync.watch('js/popup.js').on('change', gulp.series('webpack', 'reload'));
+  browserSync.watch('js/slider.js').on('change', gulp.series('webpack', 'reload'));
+  browserSync.watch('js/util.js').on('change', gulp.series('webpack', 'reload'));
 });
 
 gulp.task('watch', () => {
   gulp.watch('less/**/*.less', gulp.series('less'));
+});
+
+gulp.task('reload', function(){
+  browserSync.reload();
 });
 
 gulp.task('clean', () =>
@@ -107,9 +114,8 @@ gulp.task('mincss', () =>
 
 gulp.task('webpack', function(callback) {
   // run webpack
-  webpack((require('./webpack.config.js')), function(err, stats) {
+  webpack((require('./webpack.config.js')), function(err) {
     if(err) console.log(err.message);
-    browserSync.reload();
     callback();
   });
 });

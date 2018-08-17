@@ -238,8 +238,26 @@
     #bulb_devices:checked ~ &__menu-items &__menu-inf--bulb {
       display: none;
     }
+    #kitchen_devices:checked ~ &__menu-items &__menu-label--kitchen,
+    #cam_devices:checked ~ &__menu-items &__menu-label--cam,
+    #hall_devices:checked ~ &__menu-items &__menu-label--hall,
+    #bulb_devices:checked ~ &__menu-items &__menu-label--bulb {
+      background-color: #FFD93E;
+    }
     #all_devices:checked ~ &__menu-items {
       display: flex;
+    }
+    #all_devices:checked ~ & &__items .kitchen {
+      display: block;
+    }
+    #all_devices:checked ~ & &__items .cam {
+      display: block;
+    }
+    #all_devices:checked ~ & &__items .hall {
+      display: block;
+    }
+    #all_devices:checked ~ & &__items .bulb {
+      display: block;
     }
     &__menu-label:hover,
     &__menu-label:active {
