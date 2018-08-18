@@ -48,7 +48,7 @@ if(gridSlidesLength > 9) {
 
 if(levelSlidesLength >= 7) {
   levelControl.classList.toggle('feautured-devices__controls--off');
-  feautureLeftArrow.classList.toggle('feautured-devices__control--off');
+  feautureLeftArrow.classList.toggle('feautured-devices__control--off', true);
   feautureRightArrow.addEventListener('click', slider.browseFavoriteDevices);
 }
 

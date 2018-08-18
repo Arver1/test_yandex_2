@@ -324,9 +324,8 @@ function browseFavoriteDevices(e) {
         feautureLeftArrow.classList.toggle('feautured-devices__control--off', false);
         feautureLeftArrow.addEventListener('click', browseFavoriteDevices);
       }
-      const edge = sectionLevelSlides.scrollLeft;
       sectionLevelSlides.scrollLeft += 220;
-      if(sectionLevelSlides.scrollLeft === edge) {
+      if(Math.ceil(sectionLevelSlides.scrollLeft) + sectionLevelSlides.offsetWidth === sectionLevelSlides.scrollWidth) {
         feautureRightArrow.classList.toggle('feautured-devices__control--off', true);
       }
       break;

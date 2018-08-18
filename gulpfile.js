@@ -122,4 +122,4 @@ gulp.task('webpack', function(callback) {
 
 gulp.task('build', gulp.series('clean', gulp.parallel('img','html'),'less', 'mincss', 'css', 'webpack', 'js'));
 
-gulp.task('dev', gulp.series('less', gulp.parallel('serv','watch')));
+gulp.task('dev', gulp.series('less', 'webpack', gulp.parallel('serv','watch')));
