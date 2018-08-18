@@ -310,9 +310,26 @@ const feautureLeftArrow = levelControl.querySelector('.feautured-devices__contro
 const feautureRightArrow = levelControl.querySelector('.feautured-devices__control--right');
 
 function browseFavoriteDevices(e) {
-  sectionLevelSlides.scrollLeft += 153;
-  if(sectionLevelSlides.scrollLeft !== 0){
-    feautureLeftArrow.classList.toggle('feautured-devices__control--off');
+  const direction = e.target.classList.contains('feautured-devices__control--left') ? 'left' : 'right';
+  switch(direction) {
+    case 'left' :
+      sectionLevelSlides.scrollLeft -= 220;
+      if(!sectionLevelSlides.scrollLeft) {
+        feautureLeftArrow.classList.toggle('feautured-devices__control--off', true);
+      }
+      feautureRightArrow.classList.toggle('feautured-devices__control--off', false);
+      break;
+    case 'right':
+      if(!browseFavoriteDevices.amount) {
+        feautureLeftArrow.classList.toggle('feautured-devices__control--off', false);
+        feautureLeftArrow.addEventListener('click', browseFavoriteDevices);
+      }
+      const edge = sectionLevelSlides.scrollLeft;
+      sectionLevelSlides.scrollLeft += 220;
+      if(sectionLevelSlides.scrollLeft === edge) {
+        feautureRightArrow.classList.toggle('feautured-devices__control--off', true);
+      }
+      break;
   }
 }
 

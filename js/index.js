@@ -17,7 +17,8 @@ const gridSlidesLength = gridSlides.length;
 const levelControl = document.querySelector('.feautured-devices__controls');
 const feautureLeftArrow = levelControl.querySelector('.feautured-devices__control--left');
 const feautureRightArrow = levelControl.querySelector('.feautured-devices__control--right');
-const levelSlides =  document.querySelectorAll('.next-scenarios-slider__item--level');
+const sectionLevelSlides = document.querySelector('.next-scenarios-slider__items--level');
+const levelSlides =  sectionLevelSlides.querySelectorAll('.next-scenarios-slider__item--level');
 const levelSlidesLength = levelSlides.length;
 const listFieldDevices = document.querySelectorAll('.feautured-devices > input');
 const btnAllDevices = [...listFieldDevices][0];
@@ -45,10 +46,9 @@ if(gridSlidesLength > 9) {
   leftArrow.addEventListener('click', slider.browseFavoriteScenarios);
 }
 
-feautureLeftArrow.classList.toggle('feautured-devices__control--off');
-
 if(levelSlidesLength >= 7) {
   levelControl.classList.toggle('feautured-devices__controls--off');
+  feautureLeftArrow.classList.toggle('feautured-devices__control--off');
   feautureRightArrow.addEventListener('click', slider.browseFavoriteDevices);
 }
 
@@ -95,8 +95,12 @@ function addEventKeyOnMenu(label, input, keyCode = util.ENTER_KEY_CODE) {
 }
 
 function offBtnAllDevices(e) {
-  if(!btnAllDevices.checked) return;
+  if(!btnAllDevices.checked) {
+    checkLevelSlidesLength();
+    return;
+  }
   btnAllDevices.checked = false;
+  checkLevelSlidesLength();
 }
 
 function offBtnFeaturedDevices(e) {
@@ -107,4 +111,20 @@ function offBtnFeaturedDevices(e) {
     }
     it.checked = false;
   });
+  checkLevelSlidesLength();
+}
+
+function checkLevelSlidesLength() {
+  const amount = [...levelSlides].reduce((prev, it) => {
+    if(getComputedStyle(it).display === 'block') return ++prev;
+    return prev;
+  }, 0);
+  if(amount < 7) {
+    levelControl.classList.toggle('feautured-devices__controls--off', true);
+  } else {
+    levelControl.classList.toggle('feautured-devices__controls--off', false);
+  }
+  sectionLevelSlides.scrollLeft = 0;
+  feautureLeftArrow.classList.toggle('feautured-devices__control--off', true);
+  feautureRightArrow.classList.toggle('feautured-devices__control--off', false);
 }
