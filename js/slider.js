@@ -339,5 +339,6 @@ export default {
   addFloorSlider,
   distributeGridSlides,
   browseMainScenarios,
-  browseFavoriteDevices
+  browseFavoriteDevices,
+  browseFavoriteScenarios
 }
