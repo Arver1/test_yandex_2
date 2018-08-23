@@ -17,7 +17,7 @@ const controlBtnTemp = `
 </div>`;
 
 const valueTemp = `
-<span class="slider__value">0</span>
+<span class="slider__value">{{0}}</span>
 <svg class="slider__icon" width="40" height="40">
 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon_temperature_2"></use>
 </svg>
@@ -57,6 +57,7 @@ const sliderThermostat = `
 </svg>
 <input class="thermostat__field" type="hidden" value="5" name="thermostat">
 <div class="thermostat__wrapper"><span class="thermostat__value">5</span></div>
+<div class="thermostat__pointer"></div>
 </div>`;
 
 function checkRepeatTextContent(elem, content) {
@@ -73,10 +74,14 @@ function addTitleAndDescription(elem, btnPanel, sliderSample, mode) {
   checkRepeatTextContent(sliderDescription, description);
   sliderControlPanel.innerHTML = btnPanel;
   slider.innerHTML = sliderSample;
+  const currentValue = slider.querySelector('input').value;
+  const currentTemp = valueTemp.replace('{{0}}', `+${currentValue}`);
   if(mode === 'light') {
     sliderValue.innerHTML = valueLight;
+    const icon = sliderValue.querySelector('.slider svg');
+    icon.style.opacity = currentValue / 1000 + 0.2;
   } else {
-    sliderValue.innerHTML = valueTemp;
+    sliderValue.innerHTML = currentTemp;
   }
 }
 
@@ -185,6 +190,7 @@ function addFloorSlider(elem) {
   const termostat = slider.querySelector('.thermostat');
   const termostatValue = slider.querySelector('.thermostat__value');
   const termostatField = slider.querySelector('.thermostat__field');
+  const termostatPointer = slider.querySelector('.thermostat__pointer');
   slider.addEventListener('click', (e) => {
     if (!e.target.classList.contains('thermostat__scale-wrapper')) {
       return;
@@ -206,21 +212,34 @@ function addFloorSlider(elem) {
       let amount = Math.floor((angle - 30) / 2.8);
       if(amount < 0) {
         amount = 0;
-      } else if(amount > 50) {
+      } else if(amount >= 50 && amount < 80) {
         amount -= 2;
-      } else if (amount > 80) {
-        amount -= 5;
+      } else if (amount >= 80) {
+        amount -= 4;
       }
-      const arr = [...new Array(amount)].fill('1.5 3.5');
-      const str = arr.join(' ');
-      const final = slider.querySelector('.thermostat__scale-fill');
-      final.style.strokeDasharray = `0 110 ${str} 0 3000`;
-      let temperature = 3 + Math.floor(angle / 14.29);
-      temperature = temperature > 25 ? 25 : temperature;
-      termostatValue.textContent = temperature;
-      termostatField.value = temperature;
-      const value = sliderValue.querySelector('.slider__value');
-      value.textContent = `+${temperature}`;
+      if(angle >= 30 && angle <= 332) {
+        let rotateAngle = angle < 33 ? 33 :
+          angle > 328 ? 328 : angle;
+        if(rotateAngle >= 88 && rotateAngle < 117) {
+          rotateAngle += 1.5;
+        } else if(rotateAngle >= 117 && rotateAngle < 252) {
+          rotateAngle += 2.8;
+        } else if (rotateAngle >= 252 && rotateAngle < 324) {
+          rotateAngle -= 2.5;
+        }
+        termostatPointer.style.transform = `rotate(${180 + rotateAngle}deg)`;
+        const arr = [...new Array(amount)].fill('1.5 3.5');
+        const str = arr.join(' ');
+        const final = slider.querySelector('.thermostat__scale-fill');
+        final.style.strokeDasharray = `0 110 ${str} 0 3000`;
+        let temperature = 3 + Math.floor(angle / 14.29);
+        temperature = temperature > 25 ? 25 :
+          temperature < 5 ? 5 : temperature;
+        termostatValue.textContent = temperature;
+        termostatField.value = temperature;
+        const value = sliderValue.querySelector('.slider__value');
+        value.textContent = `+${temperature}`;
+      }
     }
   });
 }

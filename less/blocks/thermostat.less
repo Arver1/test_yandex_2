@@ -43,4 +43,19 @@
     cursor: pointer;
     z-index: 150;
   }
+  &__pointer {
+    width: 2px;
+    height: 176px;
+    background-color: transparent;
+    position: absolute;
+    transform: rotate(212deg);
+  }
+  &__pointer::after {
+    content: '';
+    display: block;
+    border: 6px solid transparent;
+    border-top: 6px solid #000;
+    transform-origin: center top;
+    transform: rotate(180deg) translate(5px, -7px) translateZ(0);
+  }
 }
