@@ -1,5 +1,6 @@
 import util from './util';
 
+let timeId = null;
 const sliderContainer = document.querySelector('.slider');
 const sliderControlPanel = sliderContainer.querySelector('.next-function-slider__control-panel');
 const sliderTitle = sliderContainer.querySelector('.slider__title');
@@ -225,23 +226,46 @@ function addFloorSlider(elem) {
 }
 
 const verticalContainer = document.querySelector('.next-scenarios-slider__items--vertical');
+const verticalArrow = document.querySelector('.next-scenarios-slider__control');
 
 function browseMainScenarios(e) {
-  const direction = this.classList.contains('next-scenarios-slider__control--up') ? 'up' : 'down';
-  switch(direction) {
-    case 'up':
-      verticalContainer.scrollTop -=133;
-      if(verticalContainer.scrollTop === 0) {
-        this.classList.toggle('next-scenarios-slider__control--up');
-      }
-      break;
-    case 'down':
-      verticalContainer.scrollTop += 133;
-      if((verticalContainer.scrollTop ^ 0) + 311 === verticalContainer.scrollHeight) {
-        this.classList.toggle('next-scenarios-slider__control--up');
-      }
-      break;
+  if(timeId) {
+    clearTimeout(timeId);
   }
+  timeId = setTimeout(() => {
+    const direction = this.classList.contains('next-scenarios-slider__control--up') ? 'up' : 'down';
+    const currentScrollTop = verticalContainer.scrollTop;
+    switch(direction) {
+      case 'up':
+        util.animate({
+          duration: 500,
+          timing: timeFraction => timeFraction,
+          draw: timeFraction => {
+            verticalContainer.scrollTop = currentScrollTop - 133 * timeFraction;
+            if(timeFraction === 1) {
+              if(verticalContainer.scrollTop === 0) {
+                verticalArrow.classList.toggle('next-scenarios-slider__control--up');
+              }
+            }
+          }
+        });
+        break;
+      case 'down':
+        util.animate({
+          duration: 500,
+          timing: timeFraction => timeFraction,
+          draw: timeFraction => {
+            verticalContainer.scrollTop = currentScrollTop + 133 * timeFraction;
+            if(timeFraction === 1) {
+              if(Math.ceil(verticalContainer.scrollTop + verticalContainer.offsetHeight) === verticalContainer.scrollHeight) {
+                verticalArrow.classList.toggle('next-scenarios-slider__control--up');
+              }
+            }
+          }
+        });
+        break;
+    }
+  }, 300);
 }
 
 const sectionGridScenarios = document.querySelector('.next-scenarios-slider--grid');
@@ -310,26 +334,50 @@ const feautureLeftArrow = levelControl.querySelector('.feautured-devices__contro
 const feautureRightArrow = levelControl.querySelector('.feautured-devices__control--right');
 
 function browseFavoriteDevices(e) {
-  const direction = e.target.classList.contains('feautured-devices__control--left') ? 'left' : 'right';
-  switch(direction) {
-    case 'left' :
-      sectionLevelSlides.scrollLeft -= 220;
-      if(!sectionLevelSlides.scrollLeft) {
-        feautureLeftArrow.classList.toggle('feautured-devices__control--off', true);
-      }
-      feautureRightArrow.classList.toggle('feautured-devices__control--off', false);
-      break;
-    case 'right':
-      if(!browseFavoriteDevices.amount) {
-        feautureLeftArrow.classList.toggle('feautured-devices__control--off', false);
-        feautureLeftArrow.addEventListener('click', browseFavoriteDevices);
-      }
-      sectionLevelSlides.scrollLeft += 220;
-      if(Math.ceil(sectionLevelSlides.scrollLeft) + sectionLevelSlides.offsetWidth === sectionLevelSlides.scrollWidth) {
-        feautureRightArrow.classList.toggle('feautured-devices__control--off', true);
-      }
-      break;
+  if(timeId) {
+    clearTimeout(timeId);
   }
+  timeId = setTimeout(() => {
+    const direction = e.target.classList.contains('feautured-devices__control--left') ? 'left' : 'right';
+    const currentScrollLeft = sectionLevelSlides.scrollLeft;
+    switch(direction) {
+      case 'left' :
+        feautureRightArrow.classList.toggle('feautured-devices__control--off', false);
+        util.animate({
+          duration: 500,
+          timing: timeFraction => timeFraction,
+          draw: timeFraction => {
+            sectionLevelSlides.scrollLeft = currentScrollLeft - 220 * timeFraction;
+            if(timeFraction === 1) {
+              if(!sectionLevelSlides.scrollLeft) {
+                feautureLeftArrow.classList.toggle('feautured-devices__control--off', true);
+              }
+              feautureRightArrow.classList.toggle('feautured-devices__control--off', false);
+            }
+          }
+        });
+        break;
+      case 'right':
+        if(!browseFavoriteDevices.amount) {
+          feautureLeftArrow.classList.toggle('feautured-devices__control--off', false);
+          feautureLeftArrow.addEventListener('click', browseFavoriteDevices);
+        }
+        util.animate({
+          duration: 500,
+          timing: timeFraction => timeFraction,
+          draw: timeFraction => {
+            sectionLevelSlides.scrollLeft = currentScrollLeft + 160 * timeFraction;
+            if(timeFraction === 1) {
+              if(Math.ceil(sectionLevelSlides.scrollLeft) + sectionLevelSlides.offsetWidth >= sectionLevelSlides.scrollWidth) {
+                feautureRightArrow.classList.toggle('feautured-devices__control--off', true);
+              }
+              feautureLeftArrow.classList.toggle('feautured-devices__control--off', false);
+            }
+          }
+        });
+        break;
+    }
+  }, 300);
 }
 
 export default {

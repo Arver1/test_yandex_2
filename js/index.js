@@ -23,6 +23,17 @@ const levelSlidesLength = levelSlides.length;
 const listFieldDevices = document.querySelectorAll('.feautured-devices > input');
 const btnAllDevices = [...listFieldDevices][0];
 
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame    ||
+    window.oRequestAnimationFrame      ||
+    window.msRequestAnimationFrame     ||
+    function(/* function */ callback, /* DOMElement */ element){
+      window.setTimeout(callback, 1000 / 60);
+    };
+})();
+
 addEventKeyOnMenu(mainMenu, menuControl);
 addEventKeyOnMenu(devicesMenu, devicesMenuControl);
 [...popUpSlider].forEach(it => {
